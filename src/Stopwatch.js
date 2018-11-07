@@ -47,12 +47,14 @@ class Stopwatch extends Component {
 
   handleLap = () => {
     if (this.state.elapsed !== 0) {
-      this.setState(
-        {
-          laps: [...this.state.laps, this.state.elapsed]
-        },
-        () => console.log(this.state)
-      );
+      if (this.state.laps[this.state.laps.length - 1] !== this.state.elapsed) {
+        this.setState(
+          {
+            laps: [...this.state.laps, this.state.elapsed]
+          },
+          () => console.log(this.state)
+        );
+      }
     } else {
       console.log("none");
     }
