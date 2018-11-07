@@ -1,0 +1,50 @@
+.Nav {
+  display: flex;
+  width: 600px;
+  justify-content: space-between;
+  margin: 30px auto;
+
+  button {
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #999;
+    border-radius: 5px;
+    color: white;
+    transition: all 0.5s ease;
+    font-weight: 600;
+    outline: none;
+    font-size: 1.6rem;
+
+    &:first-child {
+      &:hover,
+      &.active {
+        background-color: green;
+      }
+    }
+    &:nth-child(2) {
+      &:hover,
+      &.active {
+        background-color: orangered;
+      }
+    }
+    &:nth-child(3) {
+      &:hover,
+      &.active {
+        background-color: lightseagreen;
+      }
+    }
+    &:nth-child(4) {
+      &:hover,
+      &.active {
+        background-color: #111;
+      }
+    }
+  }
+}
+
+.Stopwatch {
+  text-align: center;
+  font-size: 5rem;
+  font-weight: 100;
+  margin: 50px 0;
+}

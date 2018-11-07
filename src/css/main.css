@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+html {
+  font-family: sans-serif;
+  font-size: 62.5%; }
+
+body {
+  font-size: 1.6rem; }
+
+.Nav {
+  display: flex;
+  width: 600px;
+  justify-content: space-between;
+  margin: 30px auto; }
+  .Nav button {
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #999;
+    border-radius: 5px;
+    color: white;
+    transition: all 0.5s ease;
+    font-weight: 600;
+    outline: none;
+    font-size: 1.6rem; }
+    .Nav button:first-child:hover, .Nav button:first-child.active {
+      background-color: green; }
+    .Nav button:nth-child(2):hover, .Nav button:nth-child(2).active {
+      background-color: orangered; }
+    .Nav button:nth-child(3):hover, .Nav button:nth-child(3).active {
+      background-color: lightseagreen; }
+    .Nav button:nth-child(4):hover, .Nav button:nth-child(4).active {
+      background-color: #111; }
+
+.Stopwatch {
+  text-align: center;
+  font-size: 5rem;
+  font-weight: 100;
+  margin: 50px 0; }
