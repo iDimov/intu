@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` 1`] = `
+Array [
+  <div
+    className="Controls"
+>
+    <button
+        className="start"
+        href="#"
+        onClick={[Function]}
+    >
+        Start
+    </button>
+    <button
+        href="#"
+        onClick={[Function]}
+    >
+        Lap
+    </button>
+    <button
+        href="#"
+        onClick={[Function]}
+    >
+        Reset
+    </button>
+    <button
+        href="#"
+        onClick={[Function]}
+    >
+        Clear Laps
+    </button>
+</div>,
+  <div
+    className="Stopwatch"
+>
+    00 : 00 : 000
+</div>,
+  <ul
+    className="Results"
+/>,
+]
+`;

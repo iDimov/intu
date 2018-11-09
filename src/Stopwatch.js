@@ -93,7 +93,7 @@ class Stopwatch extends Component {
     return (
       <React.Fragment>
         <div className="Controls">
-          <button href="#" onClick={this.handleStartStop}>
+          <button href="#" className="start" onClick={this.handleStartStop}>
             {this.state.running ? "Stop" : "Start"}
           </button>
           <button href="#" onClick={this.handleLap}>
