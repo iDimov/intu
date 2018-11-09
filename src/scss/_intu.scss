@@ -1,42 +1,50 @@
-.Nav {
+.Controls {
   display: flex;
-  width: 600px;
-  justify-content: space-between;
-  margin: 30px auto;
+  max-width: 60rem;
+  justify-content: space-around;
+  margin: 3rem auto;
+  flex-wrap: wrap;
 
   button {
-    text-decoration: none;
-    padding: 10px 20px;
-    background-color: #999;
-    border-radius: 5px;
+    margin: 1rem;
+    padding: 1rem;
+    min-width: 13rem;
+    background-color: #aaa;
     color: white;
-    transition: all 0.5s ease;
+    font-size: 1.6rem;
+    border-radius: 0.5rem;
     font-weight: 600;
     outline: none;
-    font-size: 1.6rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.5s ease;
 
     &:first-child {
+      background-color: #468966;
       &:hover,
       &.active {
-        background-color: green;
+        background-color: #57ab7f;
       }
     }
     &:nth-child(2) {
+      background-color: #b64926;
       &:hover,
       &.active {
-        background-color: orangered;
+        background-color: #d4552c;
       }
     }
     &:nth-child(3) {
+      background-color: #ffb03b;
       &:hover,
       &.active {
-        background-color: lightseagreen;
+        background-color: #f8c06d;
       }
     }
     &:nth-child(4) {
+      background-color: #111;
       &:hover,
       &.active {
-        background-color: #111;
+        background-color: #555;
       }
     }
   }
@@ -44,7 +52,21 @@
 
 .Stopwatch {
   text-align: center;
-  font-size: 5rem;
+  font-size: 6rem;
   font-weight: 100;
-  margin: 50px 0;
+  margin: 5rem 0;
+}
+
+.Results {
+  text-align: center;
+  color: #999;
+  & > li:first-child {
+    color: #555;
+  }
+}
+
+@media (max-width: 767px) {
+  .Stopwatch {
+    font-size: 4.5rem;
+  }
 }

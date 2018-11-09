@@ -15,5 +15,10 @@
     "eject": "react-scripts eject",
     "build-css": "node-sass-chokidar src/scss -o src/css/",
     "watch-css": "npm run build-css && node-sass-chokidar src/scss -o src/css/ --watch"
+  },
+  "devDependencies": {
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.7.0",
+    "jest": "^23.6.0"
   }
 }

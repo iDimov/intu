@@ -3,83 +3,48 @@ import React, { Component } from "react";
 class Stopwatch extends Component {
   state = {
     running: false,
-    elapsed: 0,
+    TimeDifference: 0,
     lastTick: 0,
     laps: []
   };
 
   componentDidMount() {
-    this.interval = setInterval(this.tick, 1);
+    this.interval = setInterval(this.tick, 10);
   }
 
-  tick = () => {
-    if (this.state.running) {
-      let now = Date.now();
-      let diff = now - this.state.lastTick;
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
 
+  handleStartStop = () => {
+    if (this.state.running) {
       this.setState({
-        elapsed: this.state.elapsed + diff,
-        lastTick: now
+        running: false
+      });
+    } else {
+      this.setState({
+        running: true,
+        lastTick: Date.now()
       });
     }
   };
 
-  handleStart = () => {
-    this.setState({
-      running: true,
-      lastTick: Date.now()
-    });
-  };
-
-  handlePause = () => {
-    this.setState({
-      running: false
-    });
-  };
-
-  handleStop = () => {
+  handleReset = () => {
     this.setState({
       running: false,
-      elapsed: 0,
+      TimeDifference: 0,
       lastTick: 0
     });
   };
 
   handleLap = () => {
-    if (this.state.elapsed !== 0) {
-      if (this.state.laps[this.state.laps.length - 1] !== this.state.elapsed) {
-        this.setState(
-          {
-            laps: [...this.state.laps, this.state.elapsed]
-          },
-          () => console.log(this.state)
-        );
+    if (this.state.TimeDifference !== 0) {
+      if (this.state.laps[0] !== this.state.TimeDifference) {
+        this.setState({
+          laps: [this.state.TimeDifference, ...this.state.laps]
+        });
       }
-    } else {
-      console.log("none");
     }
-  };
-
-  format = milliseconds => {
-    let totalSec = Math.floor(milliseconds / 1000);
-    let min = Math.floor(totalSec / 60);
-    let sec = totalSec % 60;
-    let mSec = milliseconds % 1000;
-    let fmSec;
-    // console.log(milliseconds, totalSec, min, sec, mSec, fmSec);
-    if (mSec > 9) {
-      if (mSec > 99) {
-        fmSec = `${mSec}`;
-      } else {
-        fmSec = `0${mSec}`;
-      }
-    } else {
-      fmSec = `00${mSec}`;
-    }
-
-    return `${min > 9 ? min : "0" + min} : ${
-      sec > 9 ? sec : "0" + sec
-    } : ${fmSec}`;
   };
 
   handleClearLaps = () => {
@@ -88,31 +53,62 @@ class Stopwatch extends Component {
     });
   };
 
+  tick = () => {
+    if (this.state.running) {
+      let now = Date.now();
+      let TimeDifference = now - this.state.lastTick;
+
+      this.setState({
+        TimeDifference: this.state.TimeDifference + TimeDifference,
+        lastTick: now
+      });
+    }
+  };
+
+  format = milliseconds => {
+    let totalSeconds = Math.floor(milliseconds / 1000);
+    let minutes = Math.floor(totalSeconds / 60);
+    let seconds = totalSeconds % 60;
+    let totalMilliseconds = milliseconds % 1000;
+    let formatedMS;
+
+    if (totalMilliseconds > 9) {
+      if (totalMilliseconds > 99) {
+        formatedMS = `${totalMilliseconds}`;
+      } else {
+        formatedMS = `0${totalMilliseconds}`;
+      }
+    } else {
+      formatedMS = `00${totalMilliseconds}`;
+    }
+
+    return `${minutes > 9 ? minutes : "0" + minutes} : ${
+      seconds > 9 ? seconds : "0" + seconds
+    } : ${formatedMS}`;
+  };
+
   render() {
-    let time = this.format(this.state.elapsed);
+    let stopwatch = this.format(this.state.TimeDifference);
     let laps = this.state.laps.map(v => <li key={v}> {this.format(v)}</li>);
     return (
-      <div>
-        <nav className="Nav">
-          <button href="#" onClick={this.handleStart}>
-            Start
+      <React.Fragment>
+        <div className="Controls">
+          <button href="#" onClick={this.handleStartStop}>
+            {this.state.running ? "Stop" : "Start"}
           </button>
           <button href="#" onClick={this.handleLap}>
             Lap
           </button>
-          <button href="#" onClick={this.handlePause}>
-            Pause
-          </button>
-          <button href="#" onClick={this.handleStop}>
-            Stop
+          <button href="#" onClick={this.handleReset}>
+            Reset
           </button>
           <button href="#" onClick={this.handleClearLaps}>
             Clear Laps
           </button>
-        </nav>
-        <div className="Stopwatch">{time}</div>
-        <ul className="results">{laps}</ul>
-      </div>
+        </div>
+        <div className="Stopwatch">{stopwatch}</div>
+        <ul className="Results">{laps}</ul>
+      </React.Fragment>
     );
   }
 }

@@ -10,32 +10,54 @@ html {
 body {
   font-size: 1.6rem; }
 
-.Nav {
+.Controls {
   display: flex;
-  width: 600px;
-  justify-content: space-between;
-  margin: 30px auto; }
-  .Nav button {
-    text-decoration: none;
-    padding: 10px 20px;
-    background-color: #999;
-    border-radius: 5px;
+  max-width: 60rem;
+  justify-content: space-around;
+  margin: 3rem auto;
+  flex-wrap: wrap; }
+  .Controls button {
+    margin: 1rem;
+    padding: 1rem;
+    min-width: 13rem;
+    background-color: #aaa;
     color: white;
-    transition: all 0.5s ease;
+    font-size: 1.6rem;
+    border-radius: 0.5rem;
     font-weight: 600;
     outline: none;
-    font-size: 1.6rem; }
-    .Nav button:first-child:hover, .Nav button:first-child.active {
-      background-color: green; }
-    .Nav button:nth-child(2):hover, .Nav button:nth-child(2).active {
-      background-color: orangered; }
-    .Nav button:nth-child(3):hover, .Nav button:nth-child(3).active {
-      background-color: lightseagreen; }
-    .Nav button:nth-child(4):hover, .Nav button:nth-child(4).active {
+    border: none;
+    cursor: pointer;
+    transition: all 0.5s ease; }
+    .Controls button:first-child {
+      background-color: #468966; }
+      .Controls button:first-child:hover, .Controls button:first-child.active {
+        background-color: #57ab7f; }
+    .Controls button:nth-child(2) {
+      background-color: #b64926; }
+      .Controls button:nth-child(2):hover, .Controls button:nth-child(2).active {
+        background-color: #d4552c; }
+    .Controls button:nth-child(3) {
+      background-color: #ffb03b; }
+      .Controls button:nth-child(3):hover, .Controls button:nth-child(3).active {
+        background-color: #f8c06d; }
+    .Controls button:nth-child(4) {
       background-color: #111; }
+      .Controls button:nth-child(4):hover, .Controls button:nth-child(4).active {
+        background-color: #555; }
 
 .Stopwatch {
   text-align: center;
-  font-size: 5rem;
+  font-size: 6rem;
   font-weight: 100;
-  margin: 50px 0; }
+  margin: 5rem 0; }
+
+.Results {
+  text-align: center;
+  color: #999; }
+  .Results > li:first-child {
+    color: #555; }
+
+@media (max-width: 767px) {
+  .Stopwatch {
+    font-size: 4.5rem; } }
